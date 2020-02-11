@@ -28,15 +28,9 @@ int main() {
     printf("output4: %d\n", *ptr);
     printf("char a = %c, b = %c, c = %c, d = %c\n", p.a, p.b, p.c, p.d);
 
-    *ptr = -431272883; 
+    *ptr = 1;//////////FILL VALUE HERE
     printf("output5: %d\n", *ptr);
     printf("char a = %c, b = %c, c = %c, d = %c\n", p.a, p.b, p.c, p.d);
-    printf("Decimal notation of char d = %d\n", (unsigned char)p.d);
-
-
-    *ptr = 1;//////////FILL VALUE HERE
-    printf("output6: %d\n", *ptr);
-    printf("Decimal notation of char a = %d, b = %d, c=%d, d=%d\n", (unsigned char)p.a, (unsigned char)p.b, (unsigned char)p.c, (unsigned char)p.d);
 }
 
 
@@ -49,7 +43,4 @@ M: 01001101 = 77
 
 J||K||L||M: 01001010 01001011 01001100 01001101
 
-mew: ‭‭11100110‬ = 230
-
-mew || K || L || M: ‭‭11100110‬ 01001011 01001100 01001101
 */

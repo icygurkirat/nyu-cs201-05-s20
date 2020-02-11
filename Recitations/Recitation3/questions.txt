@@ -1,2 +1,9 @@
 Problem 1:
-Modify code1.c at the commented location such that a = 220, b = 34, c= 45, d = 145.
+Modify code1.c at the commented location such line after output5 has a = 'C', b = 'O', c= 'D', d = 'E'.
+
+ASCII codes
+'C': 67
+'O': 79
+'D': 68
+'E': 69
+
