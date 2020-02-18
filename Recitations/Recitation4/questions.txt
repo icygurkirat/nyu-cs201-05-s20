@@ -3,7 +3,7 @@
     b) Write bit notation for the 32 bit floating point "denormalized" number with the samllest absolute value.
     c) Write result of 32 bit floating point addition of 4, -0.375. In particular give the result in bit format.
     d) Write result of 32 bit floating point multiplication of 4, -0.375. In particular give the result in bit format.
-    e) Write result of 8 bit floating point multiplication of 1.125, 1.5. In particular give the result in bit format. Use nearest even rounding.
+    e) Write result of 8 bit floating point multiplication of 1.125, 1.5. In particular give the result in bit format. Use nearest even rounding. An 8 bit floating point number has: 1 bit for S, 4 bits for Exp, 3 bits for frac.
 
 2. The program in code.c was designed to print all the numbers in array "arr". But it does not perform so. Submit a modified "code.c" file which fixes this bug. Add a line or two at the top of the 
 file (as a comment) which states the reason as to why did the original file not work correctly.
