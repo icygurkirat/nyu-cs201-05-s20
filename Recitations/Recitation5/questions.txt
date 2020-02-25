@@ -16,7 +16,4 @@ o
 3. Why did the original code not work properly? Add a line or two at the top of the file (as a comment) which states the reason as to why did the original file not work correctly.
 
 
-4. The code3.c has a memory leak problem. The total memory utilized by the program keeps on increasing as the number of iterations increase. Modify the function foo() to avoid this.
-
-
-5. The code4.c is expected to change the value of struct to {4,'A','B','C','D',30} but the output obtained does not imply this result. Modify ONLY the code in Section3 to obtain the desired result.
+4. The code4.c is expected to change the value of struct to {4,'A','B','C','D',30} but the output obtained does not imply this result. Modify ONLY the code in Section3 to obtain the desired result.
