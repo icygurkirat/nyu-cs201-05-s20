@@ -1,0 +1,22 @@
+1. The program in code1.c was designed to print all the numbers in array "arr". But it does not perform so. Submit a modified "code1.c" file which fixes this bug. Add a line or two at the top of the 
+file (as a comment) which states the reason as to why did the original file not work correctly.
+Keep your soultion as generic as possible i.e. do not simply write printf("%d %d %d %d %d", a[0],a[1],a[2],a[3],a[4]).
+
+
+2. We know that the strings in C are char arrays ending in null character. 
+code2.c uses this knowledge to print all characters of string str in new lines. But the program does not terminate.
+Fix this bug my modifying ONLY the condition inside the while paranthesis (line 8). Do not modify any other lines. It's okay if your program compiles with warnings, but the final output should be:
+H
+e
+l
+l
+o
+
+
+3. Why did the original code not work properly? Add a line or two at the top of the file (as a comment) which states the reason as to why did the original file not work correctly.
+
+
+4. The code3.c has a memory leak problem. The total memory utilized by the program keeps on increasing as the number of iterations increase. Modify the function foo() to avoid this.
+
+
+5. The code4.c is expected to change the value of struct to {4,'A','B','C','D',30} but the output obtained does not imply this result. Modify ONLY the code in Section3 to obtain the desired result.
