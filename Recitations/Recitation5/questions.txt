@@ -2,6 +2,23 @@
 file (as a comment) which states the reason as to why did the original file not work correctly.
 Keep your soultion as generic as possible i.e. do not simply write printf("%d %d %d %d %d", a[0],a[1],a[2],a[3],a[4]).
 
+#include <stdio.h> 
+
+//arrays passed as parameters are pointers
+
+void printArray(int arr[], int arr_len) 
+{ 
+    int i;
+    for (i = 0; i < arr_len; i++)
+        printf("%d\n", arr[i]); 
+} 
+  
+int main() 
+{ 
+    int arr[5] = { 1, 2, 3, 4, 5 }; 
+    printArray(arr, sizeof(arr)/sizeof(arr[0]));
+    return 0; 
+} 
 
 2. We know that the strings in C are char arrays ending in null character. 
 code2.c uses this knowledge to print all characters of string str in new lines. But the program does not terminate.
@@ -12,8 +29,61 @@ l
 l
 o
 
+#include <stdio.h> 
 
-3. Why did the original code2.c not work properly? Add a line or two at the top of the file (as a comment) which states the reason as to why did the original file not work correctly.
+//The original did not work because it was iterating the pointer, not the array that the pointer is pointing to.
 
+int main() 
+{
+    char str[] = "Hello";
+    char* ptr = str;
+
+    while(*ptr != NULL) {
+        printf("%c\n", *ptr);
+        ptr++;
+    }
+    return 0; 
+} 
 
 4. The code4.c is expected to change the value of struct to {4,'A','B','C','D',30} but the output obtained does not imply this result. Modify ONLY the code in Section3 to obtain the desired result.
+
+#include <stdio.h>
+
+struct Point
+{
+   int x;
+   char a,b,c,d;
+   int y;
+};
+
+int main() {
+    struct Point p = {3, 'a', 'b', 'c', 'd', 20};
+    int *ptr = &p.x;
+
+    //Section1: changing p.x
+    *ptr = 4;
+    printf("p.x: %d\n", p.x);
+
+
+    //Section2: changing p.a and p.b
+    ptr = ptr + 1;
+    char* c_ptr = (char*)ptr;
+    *c_ptr = 'A';
+    c_ptr++;
+    *c_ptr = 'B';
+    c_ptr++;
+    *c_ptr = 'C';
+    c_ptr++;
+    *c_ptr = 'D';
+    printf("p.a: %c\n", p.a);
+    printf("p.b: %c\n", p.b);
+    printf("p.c: %c\n", p.c);
+    printf("p.d: %c\n", p.d);
+
+    
+    //Section3: changing p.y
+    c_ptr++;
+    int* i_ptr = (int*)c_ptr; //cast the char pointer to int pointer
+    *i_ptr = 30;
+    printf("p.y: %d\n", p.y);
+}
