@@ -4,7 +4,7 @@
    Create two int matrices A and B of size 1000x3000 in heap memory using malloc.
    Define A(i,j) = i + j
    Define B(i,j) = i * j
-   0 <= i <= 1000.  0 <= j <= 3000.
+   0 <= i < 1000.  0 <= j < 3000.
    Create another matrix C of same dimensions in heap memory. Do the matrix addition such that C(i,j) = A(i,j) + B(i,j)
 
    Note: heap memory only supports 1D data structures. So you will have to store the entire matrix in linear fashion.
