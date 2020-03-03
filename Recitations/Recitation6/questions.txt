@@ -1,0 +1,14 @@
+1. The file q1.c has a memory leak problem. The total memory utilized by the program keeps on increasing as the number of iterations increase. Modify the function foo() to avoid this.
+
+2. 2D array (or matrix) addition in dynamic memory: Write a C program to do the following and submit it as q2.c
+   Create two int matrices A and B of size 1000x3000 in heap memory using malloc.
+   Define A(i,j) = i + j
+   Define B(i,j) = i * j
+   0 <= i <= 1000.  0 <= j <= 3000.
+   Create another matrix C of same dimensions in heap memory. Do the matrix addition such that C(i,j) = A(i,j) + B(i,j)
+
+   Note: heap memory only supports 1D data structures. So you will have to store the entire matrix in linear fashion.
+
+3. The code q3.c leads to a "segmentation fault" when executing. Fix the bug and submit the code. Include a comment at the top explaining the reason for code failure.
+
+4. The code q4.c contains the same program but array is declared statically instead of using malloc. This leads to a segmentation fault sonner than q3.c. Fix the bug and submit the code. Include a comment at the top explaining the reason for code failure, and why did the error occur before q3.c.
