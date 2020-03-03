@@ -1,0 +1,55 @@
+1. sizeof(arr)/sizeof(arr[0]) is equal to array length ONLY if arr is an array variable. But arrays are passed as pointer variables to functions, and so the value of arr_size is 2 (instead of 5).
+
+Fix: There is no way for a function to know size of an array using the existing arguments. So we can instead pass the "arr_size" as another parameter to the function printArray().
+
+
+#include <stdio.h> 
+
+void printArray(int arr[], int arr_size) 
+{ 
+    int i;
+    for (i = 0; i < arr_size; i++)
+        printf("%d\n", arr[i]); 
+} 
+  
+int main() 
+{ 
+    int arr[5] = { 1, 2, 3, 4, 5 }; 
+    printArray(arr, 5); 
+    return 0; 
+}
+
+Full credit if you have provided either a proper reason OR a proper fix.
+
+
+
+
+
+2. while(*ptr!=NULL) or 
+while(*ptr!='\0') or 
+while(*ptr!=0)
+
+
+
+
+
+3. To terminate such a loop, we should iterate till we get a null CHARACTER '\0'. But the while loop here terminates when the value of ptr POINTER variable is NULL. This value will potentially never become NULL (or 0) because we are always doing ptr++ operation inside the loop body.
+
+
+
+
+4. 
+    //Section3: changing p.y
+    c_ptr++;
+    ptr = (int*)c_ptr;
+    *ptr = 30;
+    printf("p.y: %d\n", p.y);
+
+
+    OR
+
+
+    //Section3: changing p.y
+    ptr++;
+    *ptr = 30;
+    printf("p.y: %d\n", p.y);
