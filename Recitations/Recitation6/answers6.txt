@@ -1,0 +1,122 @@
+1. The file q1.c has a memory leak problem. The total memory utilized by the program keeps on increasing as the number of iterations increase. Modify the function foo() to avoid this.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void foo() {
+    int* ptr = (int*)malloc(sizeof(int) * 10000000);
+    for(int i = 0; i < 10000000; i++)
+        ptr[i] = i;
+    free(ptr); //The function has been modified so that upon completion it removes its heap memory so it does not accumulate.
+               //The pointer is deallocated as soon as the values are done being filled.
+}
+
+int main(int argc, char* argv[]) {
+    int* arr = (int*)malloc(10000000 * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory not allocated.\n");
+        exit(0);
+    }
+
+    printf("Size of array: %ld\n", sizeof(arr));
+    for(int i=0;i<100;i++)
+        arr[i] = i;
+
+    
+
+    while(1){
+        foo();
+    }
+
+    return 0;
+}
+
+2. 2D array (or matrix) addition in dynamic memory: Write a C program to do the following and submit it as q2.c
+   Create two int matrices A and B of size 1000x3000 in heap memory using malloc.
+   Define A(i,j) = i + j
+   Define B(i,j) = i * j
+   0 <= i <= 1000.  0 <= j <= 3000.
+   Create another matrix C of same dimensions in heap memory. Do the matrix addition such that C(i,j) = A(i,j) + B(i,j)
+
+   Note: heap memory only supports 1D data structures. So you will have to store the entire matrix in linear fashion.
+   
+   Done. That is in this same folder, titled q2.c
+
+3. The code q3.c leads to a "segmentation fault" when executing. Fix the bug and submit the code. Include a comment at the top explaining the reason for code failure.
+
+//Originally, the heap that was freed was only local within the function calls sum() and product().
+//Instead, free(arr) should be within the main method, which coincides with where it was instantiated
+#include <stdio.h>
+#include <stdlib.h>
+
+int sum(int* arr){
+    int x = 0;
+    for(int i = 0 ;i<1000000;i++)
+        x += arr[i];
+    return x;
+}
+
+int product(int* arr) {
+    int x = 1;
+    for(int i=0;i<10;i++)
+        x *= arr[i];
+    return x;
+}
+
+int main(int argc, char* argv[]) {
+    int* arr = (int*)malloc(1000000 * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory not allocated.\n");
+        exit(0);
+    }
+
+    for(int i = 0; i < 1000000; i++)
+        arr[i] = i;
+
+    printf("Sum of array: %d\n", sum(arr));
+    printf("Product of array: %d\n", product(arr));
+    free(arr); //Frees array from heap
+
+    return 0;
+}
+
+4. The code q4.c contains the same program but array is declared statically instead of using malloc. This leads to a segmentation fault sonner than q3.c. Fix the bug and submit the code. Include a comment at the top explaining the reason for code failure, and why did the error occur before q3.c.
+
+//Because the array was declared statically, it is on the stack and not heap
+//Due to this, the free() command will not work properly and is not necessary, as stack calls are
+//automatically collected during garbage collection. 
+//Also, the product for this array will always be zero, as will the one from q3, 
+//since we began by multiplying x against the zeroth index which held a value of zero. Thus, all future products will be zero. 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int sum(int* arr){
+    int x = 0;
+    for(int i = 0 ;i<100000;i++)
+        x += arr[i];
+    return x;
+}
+
+int product(int* arr) {
+    int x = 1;
+    for(int i=0;i<100000;i++)
+        x *= arr[i];
+    return x;
+}
+
+int main(int argc, char* argv[]) {
+    int arr[100000]; //This takes up space in the STACK
+    if (arr == NULL) { //This is not necessary since we now have statically initialized the array.
+        printf("Memory not allocated.\n");
+        exit(0);
+    }
+
+    for(int i = 0; i < 100000; i++)
+        arr[i] = i;
+
+    printf("Sum of array: %d\n", sum(arr));
+    printf("Product of array: %d\n", product(arr));
+
+    return 0;
+}
