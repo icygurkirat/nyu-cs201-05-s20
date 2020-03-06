@@ -24,15 +24,15 @@ int main() {
     // filling in the values of A and B
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            A[i*n + j] = i + j;
-            B[i*n + j] = i * j;
+            A[i*m + j] = i + j;
+            B[i*m + j] = i * j;
         }
     }
 
     // calculating C
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            C[i*n + j] = A[i*n + j] + B[i*n + j];
+            C[i*m + j] = A[i*m + j] + B[i*m + j];
         }
     }
 
