@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 $recNumber = "6"
 $recMaxScore = "5"
 
