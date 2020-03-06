@@ -1,0 +1,83 @@
+1. Change foo() to:
+
+void foo() {
+    int* ptr = (int*)malloc(sizeof(int) * 10000000);
+    for(int i = 0; i < 10000000; i++)
+        ptr[i] = i;
+    free(ptr);
+}
+
+
+
+
+
+2. This question carries 2 marks
+#include <stdlib.h>
+
+int main() {
+    int n = 1000, m = 3000;
+
+    int A = (int*)malloc(n * m * sizeof(int));
+    int B = (int*)malloc(n * m * sizeof(int));
+    int C = (int*)malloc(n * m * sizeof(int));
+
+    // filling in the values of A and B
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            A[i*n + j] = i + j;
+            B[i*n + j] = i * j;
+        }
+    }
+
+    // calculating C
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            C[i*n + j] = A[i*n + j] + B[i*n + j];
+        }
+    }
+
+    // alternative way to find C
+    // for(int i = 0; i < n*m; i++)
+    //     C[i] = A[i] + B[i];
+}
+
+1 mark for correct sizes of A,B,C.
+1 mark for correct implementation. Many alternative designs are possible, but this is the generic way of writing 2D data structures in heap memory.
+
+
+
+
+
+3. Reason for code failure: During execution of sum(arr), the heap space for arr was freed. So when product(arr) executes, then moment arr[0] is accessed leads to a segmentation fault as this memory was freed by sum().
+    Fix: Modify sum(arr) to:-
+
+    int sum(int* arr){
+        int x = 0;
+        for(int i = 0 ;i<1000000;i++)
+            x += arr[i];
+        return x;
+    }
+
+
+
+4. Reason for code failure: In this case segmentation fault occurs at line 8 instead of line 15. This is because free() function is legal only for data allocated using malloc(). free() can't be used for stack data.
+   Stack data is automatically flushed/freed when the function exits.
+
+   Fix: This time you have to modify both sum() and product()
+
+   int sum(int* arr){
+        int x = 0;
+        for(int i = 0 ;i<100000;i++)
+            x += arr[i];
+        return x;
+    }
+
+    int product(int* arr) {
+        int x = 1;
+        for(int i=0;i<100000;i++)
+            x *= arr[i];
+        return x;
+    }
+
+
+    There should not be any free() command in your solution.
