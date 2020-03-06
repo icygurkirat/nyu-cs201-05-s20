@@ -17,9 +17,9 @@ void foo() {
 int main() {
     int n = 1000, m = 3000;
 
-    int A = (int*)malloc(n * m * sizeof(int));
-    int B = (int*)malloc(n * m * sizeof(int));
-    int C = (int*)malloc(n * m * sizeof(int));
+    int *A = (int*)malloc(n * m * sizeof(int));
+    int *B = (int*)malloc(n * m * sizeof(int));
+    int *C = (int*)malloc(n * m * sizeof(int));
 
     // filling in the values of A and B
     for(int i = 0; i < n; i++) {
