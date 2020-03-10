@@ -1,0 +1,40 @@
+1. You are given the following information. 
+A function with prototype: void decode1(long *xp, long *yp, long *zp);
+is compiled into assembly code, yielding the following:
+
+decode1: 
+movq (%rdi), %r8 
+movq (%rsi), %rcx 
+movq (%rdx), %rax 
+movq %r8, (%rdx) 
+movq %rcx, (%rdi) 
+movq %rax, (%rsi) 
+ret
+
+Parameters xp, yp, and zp are stored in registers %rdi, %rsi, and %rdx, respectively. Write C code for decode1 that will have an effect equivalent to the assembly code shown.
+
+
+
+
+
+2. You are given the following information. 
+A function with prototype: long scale(long x, long y, long z) ;
+is compiled into assembly code, yielding the following:
+
+scale: 
+leaq (%rdi,%rsi), %rax 
+leaq 4(%rdx,%rdx,2), %rdx
+leaq 3(%rax,%rdx,4), %rax 
+ret
+
+Parameters x, y, and z are stored in registers %rdi, %rsi, and %rdx, respectively. Write C code for decode1 that will have an effect equivalent to the assembly code shown.
+
+
+
+
+
+3. For each of the following lines of assembly language, determine the appropriate instruction suffix based on the operands. Possible suffixes - b,w,l,q
+
+mov_ %rax, (%rsp) 
+mov_ (%rax), %bx 
+mov_ $127, %bl
