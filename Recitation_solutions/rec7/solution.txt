@@ -1,0 +1,34 @@
+1. 
+// xp = %rdi
+// yp = %rsi
+// zp = %rdx
+void decode1(long *xp, long *yp, long *zp) {
+    long x = *xp;    // x = %r8
+    long y = *yp;    // y = %rcx
+    long z = *zp;    // z = %rax
+
+    *zp = x;
+    *xp = y;
+    *yp = z;
+}
+
+
+
+
+2.
+// x = %rdi
+// y = %rsi
+// z = %rdx
+long scale(long x, long y, long z) {
+    long a = x + y; // variable to hold the value of %rax
+    z = 4 + z + 2 * z;
+    a = 3 + a + z * 4;
+    return a;
+}
+
+
+OR
+
+long scale(long x, long y, long z) {
+    return 19 + x + y + 12*z;
+}
