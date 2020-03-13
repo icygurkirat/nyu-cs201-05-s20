@@ -28,13 +28,3 @@ leaq 3(%rax,%rdx,4), %rax
 ret
 
 Parameters x, y, and z are stored in registers %rdi, %rsi, and %rdx, respectively. Write C code for decode1 that will have an effect equivalent to the assembly code shown.
-
-
-
-
-
-3. For each of the following lines of assembly language, determine the appropriate instruction suffix based on the operands. Possible suffixes - b,w,l,q
-
-mov_ %rax, (%rsp) 
-mov_ (%rax), %bx 
-mov_ $127, %bl
