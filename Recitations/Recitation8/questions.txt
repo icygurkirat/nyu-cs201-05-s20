@@ -1,0 +1,11 @@
+1. Refer q1.c file. Compile the file using "gcc -g -Og" options.
+   Submit the exact assembly instructions that will be executed inside the sparse_switch_eq() function for the given values of x,y,z.
+   Do not simply submit the raw assembly code of the whole function. Many of the lines will not be executed because of conditional jumps.
+   You can use gdb for this question.
+
+2. Submit the exact list of commands you used after switching on gdb, which helped you get the answer for q1.
+
+
+3. When code q3.c is run, it leads to a "segmentation fault". Use gdb to find out the line number at which segmentation fault occured.
+
+4. What is the reason for this fault in q3.c?
