@@ -1,0 +1,39 @@
+1.
+<sparse_switch_eg>    mov    %rdx,%rcx
+<sparse_switch_eg+3>  cmp    $0xc8,%rdi
+<sparse_switch_eg+10> je     0x80006e6 <sparse_switch_eg+60>   // some instructions within the function will be skipped here.
+<sparse_switch_eg+60> mov    %rsi,%rax
+<sparse_switch_eg+63> cqto 
+<sparse_switch_eg+65> idiv   %rcx
+<sparse_switch_eg+68> add    %rcx,%rax 
+<sparse_switch_eg+71> sub    %rcx,%rax
+<sparse_switch_eg+74> retq
+
+An answer without function-name annotations within <> is also accepted, provided assembly code is correct. The hex value of code location in instruction 3 may vary from machine to machine.
+
+
+
+2. 
+gcc -g -Og q1.c
+gdb a.out
+break sparse_switch_eg    OR      break 5    //function entry point
+run
+stepi
+stepi
+...
+stepi        //till control moves out of the function
+
+
+
+
+3.  At line 7: int v2 = *y;
+
+How to debug:-
+gcc -g q3.c
+gdb a.out
+run
+
+
+
+
+4. The value of pointer y is zero as per line 14. So *y is dereferencing a NULL pointer which leads to seg fault.
