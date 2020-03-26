@@ -16,6 +16,7 @@ An answer without function-name annotations within <> is also accepted, if the s
 2. 
 gcc -g -Og q1.c
 gdb a.out
+layout split
 break sparse_switch_eg    OR      break 5    //function entry point
 run
 stepi
@@ -31,6 +32,7 @@ stepi        //till control moves out of the function
 How to debug:-
 gcc -g q3.c
 gdb a.out
+layout next   //can be skipped
 run
 
 
