@@ -9,7 +9,7 @@
 <sparse_switch_eg+71> sub    %rcx,%rax
 <sparse_switch_eg+74> retq
 
-An answer without function-name annotations within <> is also accepted, provided assembly code is correct. The hex value of code location in instruction 3 may vary from machine to machine.
+An answer without function-name annotations within <> is also accepted, if the submitted assembly code is correct. The hex value of code location in instruction 3 may vary from machine to machine.
 
 
 
