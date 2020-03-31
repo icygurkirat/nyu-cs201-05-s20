@@ -23,7 +23,7 @@ Write C code for foo that will have an effect equivalent to the assembly code sh
 
 
 
-3. What are the maximum number of stack frames of fibonacci() that will simultaneously exist at some point during the execution of fibonacci(6).
+3. What are the "maximum" number of stack frames of fibonacci() that will simultaneously exist at some point during the execution of fibonacci(6).
 The code for fibonacci() is as follows:
 
 long fibonacci(long n) {
@@ -33,5 +33,5 @@ long fibonacci(long n) {
         return fibonacci(n-1) + fibonacci(n-2);
 }
 
-4. What are the total number of stack frames of fibonacci() that will eventually be created during the execution of fibonacci(6).
+4. What are the "total" number of stack frames of fibonacci() that will eventually be created during the execution of fibonacci(6).
 Use same code as q3
