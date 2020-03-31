@@ -1,0 +1,37 @@
+1. What will be the values of all four condition flags after addb operation on two integers:
+a) 11111111, 00000010
+b) 01110001, 00101011
+
+Note: the numbers are written in binary representation, and addb is an operation on two 8-bit integers.
+
+
+
+2. 
+A function with prototype: void foo(long x, long* y);
+is compiled into assembly code, yielding the following:
+
+foo:
+	cmpq	$234, %rdi
+	jle	.L2
+	cmpq	$578, (%rsi)
+	jg	.L2
+	movq	$701, (%rsi)
+.L2:
+	ret
+
+Write C code for foo that will have an effect equivalent to the assembly code shown. Be extra cautious about paranthesis in movq and cmpq.
+
+
+
+3. What are the maximum number of stack frames of fibonacci() that will simultaneously exist at some point during the execution of fibonacci(6).
+The code for fibonacci() is as follows:
+
+long fibonacci(long n) {
+    if(n<=2)
+        return 1;
+    else
+        return fibonacci(n-1) + fibonacci(n-2);
+}
+
+4. What are the total number of stack frames of fibonacci() that will eventually be created during the execution of fibonacci(6).
+Use same code as q3
