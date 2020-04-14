@@ -1,0 +1,65 @@
+1. The function yoo() is calling a function who() in a C program. It was compiled using a non-traditional compiler and it's possible 
+   that the procedure calling conventions were not obeyed with respect to register saving. Point out where are they not being obeyed. 
+   
+   The assembly code is as follows 
+
+who:
+	movq	%rdi, %rax
+	subq	%rsi, %rax
+	ret
+yoo:
+	pushq	%rbp
+	pushq	%rbx
+	movq	%rdi, %rbp
+	movq	%rsi, %rbx
+	leaq	5(,%rsi,8), %rsi
+	leaq	5(%rdi), %rdi
+	call	who
+	imulq	%rbp, %rax
+	addq	%rbx, %rax
+    popq    %rbp
+    popq    %rbx
+    ret
+
+
+2. The function yoo() is calling a function who() in a C program. It was compiled using a non-traditional compiler and it's possible 
+   that the procedure calling conventions were not obeyed with respect to register saving. Point out where are they not being obeyed. 
+   
+   The assembly code is as follows 
+
+who:
+    subq    $123, %rdi
+	movq	%rdi, %rax
+	ret
+yoo:
+	pushq	%rbp
+	movq	%rdi, %rbp
+	leaq	5(%rdi), %rdi
+	call	who
+	imulq	%rbp, %rax
+    ret
+
+
+3. Show the memory layout and give the final size of these structs. You can use sizeof() function.
+   In the memory layout, clearly show the memory addresses occupied by each data member, any holes within the struct or at the end.
+
+a) struct comp {
+      int a[3];
+      char b[2];
+      long c[2];
+      double d;
+      char e;
+   };
+
+b) struct comp2 {
+      char a;
+      long b;
+      char c[4];
+      int d;
+   };
+
+c) struct comp3 {
+      char a[2];
+      struct comp2 b;
+      int c;
+   };
