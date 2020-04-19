@@ -1,0 +1,83 @@
+1. The original values of %rbp and %rbx are not being restored in function yoo. This is because they are pushed onto the stack in order: %rbp, %rbx    and are popped in order: %rbp, %rbx.
+   They must be popped in the opposite order
+
+2. The register %rbp is being modified in yoo, but the older value is not being restored. The function requires a "popq %rbp" instruction at the end.
+
+
+3a
+
+struct comp {
+   int a[3];  // 0 -> 12 bytes
+   char b[2]; // 12 -> 14 bytes
+   long c[2]; // 16 -> 32 bytes
+   double d;  // 32 -> 40 bytes
+   char e;    // 40 -> 41 bytes 
+};
+
+Max size of a primitive = 8 bytes. Hence total size of struct is a mutliple of 8 bytes.
+Hence total size = 48 bytes
+
++-------+-------+-------+-------+-------+-------+-------+-------+
+|               a[0]            |               a[1]            |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|               a[2]            |  b[0] |  b[1] |     hole      |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|                               c[0]                            |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|                               c[1]                            |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|                               d                               |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|   e   |                         hole                          |
++-------+-------+-------+-------+-------+-------+-------+-------+
+
+
+
+
+
+3b
+
+struct comp2 {
+   char a;      // 0 -> 1 byte
+   long b;      // 8 -> 16 bytes
+   char c[4];   // 16 -> 20 bytes
+   int d;       // 20 -> 24 bytes
+};
+
+Max size of a primitive = 8 bytes. Hence total size of struct is a mutliple of 8 bytes.
+Hence total size = 24 bytes
+
++-------+-------+-------+-------+-------+-------+-------+-------+
+|   a   |                   hole                                |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|               b                                               |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  c[0] |  c[1] |  c[2] |  c[3] |            d                  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+
+
+
+
+
+3c
+
+struct comp3 {
+   char a[2];       // 0 -> 2 bytes
+   struct comp2 b;  // 8 -> 32 bytes. Starting point should be a multiple of 8 (max primitive size of comp2)
+   int c;           // 32 -> 36 bytes
+};
+
+Max size of a primitive = 8 bytes. Hence total size of struct is a mutliple of 8 bytes.
+Hence total size = 40 bytes
+
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  a[0] |  a[1] |           hole                                |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|   b.a |                   hole                                |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|               b.b                                             |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|              b.c              |            b.d                |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|               c               |            hole               |
++-------+-------+-------+-------+-------+-------+-------+-------+
