@@ -1,0 +1,16 @@
+1. The code files in "code1" folder are not getting linked when using gcc. Why is it so?
+
+2. Modify only "inc.c" file such that the linking succeeds and you are able to change the value of "a" within main.c to 5. In other words the final executable should print: 5.
+
+
+
+
+3. The command "gcc main.c foo.c" is used for linking the files in "code3" directory. The command fails and the executable is not created. Why is it so?
+
+4. What command should you run for a successful linking? You are not allowed to modify the files.
+
+
+
+
+5. We know that all non-static variables local to a function are stored in the stack. 
+   Why are static variables defined within a function not kept in stack?
