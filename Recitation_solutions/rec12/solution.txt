@@ -1,0 +1,31 @@
+1. Variable 'a' is declared as a static variable in main.c. So inc.c can't access this global variable even if it uses extern keyword.
+
+2. Leverage the non-static 'a_ptr' variable declared in main.c. Modified inc.c file:
+
+extern int* a_ptr;
+
+void modify_a() {
+    *a_ptr = 5;
+}
+
+
+
+
+
+3. The function increment() is defined in foo.c within a conditional directive. The macro 'TAG' is not defined by defined by default, and so the pre-processor removes all of the code within if directive.
+   Due to this the function increment() is not defined and fails to link to line 6 of main.c
+
+4. To fix the issue, simply define a macro named 'TAG'. One way can be to modify the code by adding a line '#define TAG'. But we are not allowed to modify the code. So simply define it during compilation:
+
+   gcc main.c foo.c -DTAG
+   
+   OR
+
+   gcc main.c foo.c -D TAG
+
+
+
+
+5. Even though the scope of a static variable defined within a function is limited to the function, it is not stored in the stack frame of a function.
+   This is because the lifetime of a local static variable is the entire duration of program execution, whereas the lifetime of a function's stack frame is limited to only when the function is called.
+   A stack frame is lost (or popped) when a function returns/exits.
