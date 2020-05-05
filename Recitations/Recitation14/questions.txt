@@ -1,5 +1,5 @@
 1. Assume an empty cache with configuration S=16, B=16, E=1 (direct mapped). Empty cache means all v bits are 0.
-   A series of instructions are executed on the CPU which access the memory at following addresses.
+   A series of instructions are executed on the CPU which access the memory at the following addresses.
    11011110000
    11011110100
    10111110110
@@ -10,8 +10,8 @@
    All addresses are in binary. For each address, specify whether it leads to a cache miss or a hit. 
 
 
-2. Assume an empty cache with configuration S=16, B=8, E=2 (two-way mapping). Empty cache means all v bits are 0.
-   A series of instructions are executed on the CPU which access the memory at following addresses.
+2. Assume an empty cache with configuration S=16, B=16, E=2 (two-way mapping). Empty cache means all v bits are 0.
+   A series of instructions are executed on the CPU which access the memory at the following addresses.
    11011110000
    10111110100
    10010011111
