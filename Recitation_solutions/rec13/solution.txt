@@ -1,5 +1,5 @@
 1.  file1: buf, main
-    file2: foo, z
+    file2: foo, z, main
 
 2.  file1: no weak symbols
     file2: y
