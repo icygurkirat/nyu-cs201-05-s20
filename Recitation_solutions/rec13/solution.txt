@@ -1,0 +1,19 @@
+1.  file1: buf, main
+    file2: foo, z
+
+2.  file1: no weak symbols
+    file2: y
+
+    NOTE: The concept of strong and weak does not apply to local variables, static global variables, global variables with extern keyword and function signatures/headers.
+          This is because they do not suffer from name duplication issues and so it is fine to say that they are neither strong nor weak.
+          Compilers classify symbols into strong and weak whenever there is possibilty of name duplication:
+          1. non-static, non-extern global variables
+          2. function definitions
+          
+
+3.  Static linking happens at compile time. The linker merges the code in library file and other C files/dependencies to obtain a single executable prog1. 
+    Hence deleting the libstatic.a file has not effect on your program execution because its code is already present in the prog1 executable.
+
+    Dynamic linking on the other hand, happens at run-time or load-time. The linker merges the library code with the prog2 executable when the prog2 is executed.
+    Hence if we delete the libdynamic.so, the linking fails because the linker can't find the library file. This leads to the program crashing.
+    
